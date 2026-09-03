@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fire TV home-row banner: 320x180dp (xhdpi). Waveform + play glyph over the
+     app name rendered as a pixel-font path (vectors cannot contain text). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="180dp"
+    android:viewportWidth="320"
+    android:viewportHeight="180">
+
+    <!-- Background -->
+    <path
+        android:fillColor="#FF0B0F17"
+        android:pathData="M0,0h320v180h-320z" />
+    <path
+        android:fillColor="#FF141B29"
+        android:pathData="M0,150h320v30h-320z" />
+
+    <!-- Waveform bars -->
+    <path
+        android:fillColor="#FF2A8F68"
+        android:pathData="M52,56h6v16h-6zM64,50h6v28h-6zM76,42h6v44h-6zM88,47h6v34h-6zM100,36h6v56h-6zM112,44h6v40h-6zM124,32h6v64h-6zM136,41h6v46h-6zM148,56h6v16h-6zM160,50h6v28h-6zM172,42h6v44h-6zM184,47h6v34h-6zM196,36h6v56h-6zM208,44h6v40h-6zM220,32h6v64h-6zM232,41h6v46h-6zM244,56h6v16h-6zM256,50h6v28h-6z" />
+
+    <!-- Play triangle on a dark backing so it reads over the bars -->
+    <path
+        android:fillColor="#FF0B0F17"
+        android:pathData="M141,38h46v52h-46z" />
+    <path
+        android:fillColor="#FF4EE1A0"
+        android:pathData="M152,46L152,82L182,64z" />
+
+    <!-- "SNIPPET" in a 5x7 pixel font -->
+    <path
+        android:fillColor="#FFF2F5F9"
+        android:pathData="M47.5,118h5v5h-5zM52.5,118h5v5h-5zM57.5,118h5v5h-5zM62.5,118h5v5h-5zM42.5,123h5v5h-5zM42.5,128h5v5h-5zM47.5,133h5v5h-5zM52.5,133h5v5h-5zM57.5,133h5v5h-5zM62.5,138h5v5h-5zM62.5,143h5v5h-5zM42.5,148h5v5h-5zM47.5,148h5v5h-5zM52.5,148h5v5h-5zM57.5,148h5v5h-5zM77.5,118h5v5h-5zM97.5,118h5v5h-5zM77.5,123h5v5h-5zM82.5,123h5v5h-5zM97.5,123h5v5h-5zM77.5,128h5v5h-5zM82.5,128h5v5h-5zM97.5,128h5v5h-5zM77.5,133h5v5h-5zM87.5,133h5v5h-5zM97.5,133h5v5h-5zM77.5,138h5v5h-5zM92.5,138h5v5h-5zM97.5,138h5v5h-5zM77.5,143h5v5h-5zM92.5,143h5v5h-5zM97.5,143h5v5h-5zM77.5,148h5v5h-5zM97.5,148h5v5h-5zM112.5,118h5v5h-5zM117.5,118h5v5h-5zM122.5,118h5v5h-5zM127.5,118h5v5h-5zM132.5,118h5v5h-5zM122.5,123h5v5h-5zM122.5,128h5v5h-5zM122.5,133h5v5h-5zM122.5,138h5v5h-5zM122.5,143h5v5h-5zM112.5,148h5v5h-5zM117.5,148h5v5h-5zM122.5,148h5v5h-5zM127.5,148h5v5h-5zM132.5,148h5v5h-5zM147.5,118h5v5h-5zM152.5,118h5v5h-5zM157.5,118h5v5h-5zM162.5,118h5v5h-5zM147.5,123h5v5h-5zM167.5,123h5v5h-5zM147.5,128h5v5h-5zM167.5,128h5v5h-5zM147.5,133h5v5h-5zM152.5,133h5v5h-5zM157.5,133h5v5h-5zM162.5,133h5v5h-5zM147.5,138h5v5h-5zM147.5,143h5v5h-5zM147.5,148h5v5h-5zM182.5,118h5v5h-5zM187.5,118h5v5h-5zM192.5,118h5v5h-5zM197.5,118h5v5h-5zM182.5,123h5v5h-5zM202.5,123h5v5h-5zM182.5,128h5v5h-5zM202.5,128h5v5h-5zM182.5,133h5v5h-5zM187.5,133h5v5h-5zM192.5,133h5v5h-5zM197.5,133h5v5h-5zM182.5,138h5v5h-5zM182.5,143h5v5h-5zM182.5,148h5v5h-5zM217.5,118h5v5h-5zM222.5,118h5v5h-5zM227.5,118h5v5h-5zM232.5,118h5v5h-5zM237.5,118h5v5h-5zM217.5,123h5v5h-5zM217.5,128h5v5h-5zM217.5,133h5v5h-5zM222.5,133h5v5h-5zM227.5,133h5v5h-5zM232.5,133h5v5h-5zM217.5,138h5v5h-5zM217.5,143h5v5h-5zM217.5,148h5v5h-5zM222.5,148h5v5h-5zM227.5,148h5v5h-5zM232.5,148h5v5h-5zM237.5,148h5v5h-5zM252.5,118h5v5h-5zM257.5,118h5v5h-5zM262.5,118h5v5h-5zM267.5,118h5v5h-5zM272.5,118h5v5h-5zM262.5,123h5v5h-5zM262.5,128h5v5h-5zM262.5,133h5v5h-5zM262.5,138h5v5h-5zM262.5,143h5v5h-5zM262.5,148h5v5h-5z" />
+
+    <!-- Accent underline -->
+    <path
+        android:fillColor="#FF4EE1A0"
+        android:pathData="M42.5,159h235v3h-235z" />
+</vector>
