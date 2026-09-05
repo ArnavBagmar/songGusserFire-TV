@@ -72,10 +72,20 @@ class AutocompleteEngineTest {
     }
 
     @Test
-    fun duplicateTitlesCollapseToMostPopular() {
+    fun sameTitleByDifferentArtistsShowsBoth() {
         val duplicated = songs + Song(6, "yellow", "Cover Band", 100)
         val results = AutocompleteEngine(duplicated).suggest("yellow")
+        val yellows = results.filter { it.title.equals("yellow", ignoreCase = true) }
+        assertEquals(setOf("Coldplay", "Cover Band"), yellows.map { it.artist }.toSet())
+        // Higher rank still lists first.
+        assertEquals("Coldplay", yellows.first().artist)
+    }
+
+    @Test
+    fun sameTitleAndArtistStillCollapsesToMostPopular() {
+        val duplicated = songs + Song(6, "yellow", "coldplay", 100)
+        val results = AutocompleteEngine(duplicated).suggest("yellow")
         assertEquals(1, results.count { it.title.equals("yellow", ignoreCase = true) })
-        assertEquals("Coldplay", results.first { it.title.equals("yellow", ignoreCase = true) }.artist)
+        assertEquals("Yellow", results.first { it.title.equals("yellow", ignoreCase = true) }.title)
     }
 }

@@ -8,6 +8,8 @@ data class Suggestion(val title: String, val artist: String)
  * Autocomplete over the full bundled pool, matching on title or artist: exact
  * prefix first, then word-prefix, then substring, then fuzzy (edit distance
  * <= 2), each group ordered by popularity. Capped at [MAX_SUGGESTIONS] results.
+ * Duplicates collapse only when title AND artist normalize identically — the
+ * same title by different artists stays as separate suggestions.
  */
 class AutocompleteEngine(songs: List<Song>) {
 
@@ -36,7 +38,7 @@ class AutocompleteEngine(songs: List<Song>) {
             )
         }
         .filter { it.normalizedTitle.isNotEmpty() }
-        .groupBy { it.normalizedTitle }
+        .groupBy { it.normalizedTitle to it.normalizedArtist }
         .map { (_, duplicates) -> duplicates.maxBy { it.rank } }
 
     fun suggest(query: String, limit: Int = MAX_SUGGESTIONS): List<Suggestion> {
