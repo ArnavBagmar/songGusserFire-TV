@@ -5,8 +5,10 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import dev.snippet.tv.audio.PreviewPlayer
+import dev.snippet.tv.data.AlbumArtStore
 import dev.snippet.tv.data.CatalogState
 import dev.snippet.tv.data.RoundStateRepository
+import dev.snippet.tv.data.SongStatsRepository
 import dev.snippet.tv.data.SettingsRepository
 import dev.snippet.tv.data.SongCatalogLoader
 import dev.snippet.tv.data.StatsRepository
@@ -46,6 +48,8 @@ class AppContainer(appContext: Context) {
 
     val settingsRepository = SettingsRepository(dataStore)
     val statsRepository = StatsRepository(dataStore, json)
+    val songStatsRepository = SongStatsRepository(dataStore, json)
+    val albumArtStore = AlbumArtStore(appContext)
     val roundStateRepository = RoundStateRepository(dataStore, json)
     val trackRepository = TrackRepository(appContext, DeezerClient(httpClient, json))
 

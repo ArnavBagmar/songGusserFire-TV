@@ -1,12 +1,14 @@
 package dev.snippet.tv.ui.game
 
 import dev.snippet.tv.audio.PreviewPlayer
+import dev.snippet.tv.data.AlbumArtStore
 import dev.snippet.tv.data.AppSettings
 import dev.snippet.tv.data.GuessKind
 import dev.snippet.tv.data.ResolvedTrack
 import dev.snippet.tv.data.RoundSelector
 import dev.snippet.tv.data.RoundStateRepository
 import dev.snippet.tv.data.SettingsRepository
+import dev.snippet.tv.data.SongStatsRepository
 import dev.snippet.tv.data.StatsRepository
 import dev.snippet.tv.data.StoredGuess
 import dev.snippet.tv.data.StoredRound
@@ -55,6 +57,8 @@ class GameController(
     private val trackRepository: TrackRepository,
     private val roundRepository: RoundStateRepository,
     private val statsRepository: StatsRepository,
+    private val songStatsRepository: SongStatsRepository,
+    private val albumArtStore: AlbumArtStore,
     settingsRepository: SettingsRepository,
     private val player: PreviewPlayer,
 ) {
@@ -199,6 +203,9 @@ class GameController(
         val won = guesses.lastOrNull()?.kind == GuessKind.CORRECT
         scope.launch {
             val stats = statsRepository.recordResult(tier, won, guesses.size)
+            songStatsRepository.recordResult(ready.track.song, won)
+            // Covers in the track cache get pruned; keep a permanent copy for the album wall.
+            albumArtStore.persist(ready.track.song.id, ready.track.coverFile)
             roundRepository.save(
                 tier,
                 StoredRound(ready.track.song.id, guesses, finished = true, won = won),

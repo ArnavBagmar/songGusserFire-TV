@@ -119,7 +119,11 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
                 SnippetButton(
                     text = "Reset everything",
                     onClick = {
-                        scope.launch { container.statsRepository.resetAll() }
+                        scope.launch {
+                            container.statsRepository.resetAll()
+                            container.songStatsRepository.resetAll()
+                            container.albumArtStore.clear()
+                        }
                         resetDone = true
                         confirmingReset = false
                     },

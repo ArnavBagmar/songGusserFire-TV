@@ -17,6 +17,7 @@ import androidx.tv.material3.SurfaceDefaults
 import dev.snippet.tv.data.model.DifficultyTier
 import dev.snippet.tv.di.AppContainer
 import dev.snippet.tv.ui.about.AboutScreen
+import dev.snippet.tv.ui.albums.AlbumsScreen
 import dev.snippet.tv.ui.game.GameScreen
 import dev.snippet.tv.ui.game.RoundSummary
 import dev.snippet.tv.ui.home.HomeScreen
@@ -30,6 +31,7 @@ sealed interface Screen {
     data class Game(val tier: DifficultyTier) : Screen
     data class Result(val summary: RoundSummary) : Screen
     data object Stats : Screen
+    data object Albums : Screen
     data object Settings : Screen
     data object About : Screen
 }
@@ -84,6 +86,11 @@ fun AppRoot(container: AppContainer) {
                     onBackToHome = { stack = listOf(Screen.Home) },
                 )
                 Screen.Stats -> StatsScreen(
+                    container = container,
+                    onAlbums = { stack = stack + Screen.Albums },
+                    onBack = { stack = stack.dropLast(1) },
+                )
+                Screen.Albums -> AlbumsScreen(
                     container = container,
                     onBack = { stack = stack.dropLast(1) },
                 )

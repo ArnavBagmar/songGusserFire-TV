@@ -36,7 +36,7 @@ import dev.snippet.tv.ui.theme.SnippetColors
 private val BAR_MAX_HEIGHT = 64.dp
 
 @Composable
-fun StatsScreen(container: AppContainer, onBack: () -> Unit) {
+fun StatsScreen(container: AppContainer, onAlbums: () -> Unit, onBack: () -> Unit) {
     val stats by container.statsRepository.statsFlow.collectAsState(initial = emptyMap())
     val backFocus = remember { FocusRequester() }
     LaunchedEffect(Unit) { backFocus.requestFocus() }
@@ -58,7 +58,10 @@ fun StatsScreen(container: AppContainer, onBack: () -> Unit) {
                 )
             }
         }
-        SnippetButton("Back", onBack, Modifier.focusRequester(backFocus))
+        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+            SnippetButton("Albums", onAlbums)
+            SnippetButton("Back", onBack, Modifier.focusRequester(backFocus))
+        }
     }
 }
 

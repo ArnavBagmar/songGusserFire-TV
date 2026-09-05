@@ -57,6 +57,8 @@ fun GameScreen(
             trackRepository = container.trackRepository,
             roundRepository = container.roundStateRepository,
             statsRepository = container.statsRepository,
+            songStatsRepository = container.songStatsRepository,
+            albumArtStore = container.albumArtStore,
             settingsRepository = container.settingsRepository,
             player = container.player,
         )
