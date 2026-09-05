@@ -18,10 +18,11 @@ data class KeyDef(
 )
 
 /**
- * Both layouts include the round actions (replay/skip/submit) as grid keys, so
- * with wrap-around navigation every key stays within 6 D-pad presses of any
- * other: alphabetical is 5 rows x 7 columns (3 + 2 = 5 presses worst case),
- * QWERTY is 3 rows x 11 columns (5 + 1 = 6).
+ * Both layouts include digits (some titles contain them) and the round actions
+ * (replay/skip/submit) as grid keys, so with wrap-around navigation every key
+ * stays within 8 D-pad presses of any other: alphabetical is 6 rows x up to 10
+ * columns (3 + 5 = 8 presses worst case), QWERTY is 4 rows x 11 columns
+ * (2 + 5 = 7).
  */
 object KeyboardLayouts {
 
@@ -30,17 +31,18 @@ object KeyboardLayouts {
         KeyboardLayoutOption.QWERTY -> qwerty
     }
 
-    private fun letters(sequence: String): List<KeyDef> =
+    private fun chars(sequence: String): List<KeyDef> =
         sequence.map { KeyDef(it.toString(), KeyAction.Character(it)) }
 
     private val alphabetical: List<List<KeyDef>> = listOf(
-        letters("ABCDEFG"),
-        letters("HIJKLMN"),
-        letters("OPQRSTU"),
-        letters("VWXYZ") + listOf(
+        chars("ABCDEFG"),
+        chars("HIJKLMN"),
+        chars("OPQRSTU"),
+        chars("VWXYZ") + listOf(
             KeyDef("SPACE", KeyAction.Space),
             KeyDef("DEL", KeyAction.Backspace),
         ),
+        chars("1234567890"),
         listOf(
             KeyDef("REPLAY", KeyAction.Replay, widthUnits = 2f),
             KeyDef("SKIP", KeyAction.SkipSong, widthUnits = 2f),
@@ -49,14 +51,15 @@ object KeyboardLayouts {
     )
 
     private val qwerty: List<List<KeyDef>> = listOf(
-        letters("QWERTYUIOP"),
-        letters("ASDFGHJKL") + listOf(
+        chars("1234567890"),
+        chars("QWERTYUIOP"),
+        chars("ASDFGHJKL") + listOf(
             KeyDef("DEL", KeyAction.Backspace, widthUnits = 1.4f),
         ),
         listOf(
             KeyDef("PLAY", KeyAction.Replay, widthUnits = 1.4f),
             KeyDef("SKIP", KeyAction.SkipSong, widthUnits = 1.4f),
-        ) + letters("ZXCVBNM") + listOf(
+        ) + chars("ZXCVBNM") + listOf(
             KeyDef("SPACE", KeyAction.Space, widthUnits = 1.6f),
             KeyDef("GUESS", KeyAction.Submit, widthUnits = 1.6f),
         ),
